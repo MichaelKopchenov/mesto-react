@@ -20,7 +20,7 @@
 
 Ниже указана ссылка на GitHub Pages
 
-* [Место ©2023. Копченов Михаил Викторович](https://michaelkopchenov.github.io/mesto/)
+* [Место ©2023. Копченов Михаил Викторович](https://michaelkopchenov.github.io/mesto-react/)
 
 # Getting Started with Create React App
 
