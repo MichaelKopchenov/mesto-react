@@ -3,9 +3,9 @@ import api from '../utils/api';
 import Card from "./Card";
 
 function Main(props) {
-    const [userName, setUserName] = useState();
-    const [userDescription, setUserDescription] = useState();
-    const [userAvatar, setUserAvatar] = useState();
+    const [userName, setUserName] = useState('');
+    const [userDescription, setUserDescription] = useState('');
+    const [userAvatar, setUserAvatar] = useState('');
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function Main(props) {
             <section className="elements" aria-label="Карточки">
                 {cards.map((item) => {
                     return <Card card={item} key={item._id} link={item.link} name={item.name} likes={item.likes.length}
-                    onCardClick={props.onCardClick} />;
+                    onCardClick={props.onCardClick}/>;
                     }
                 )
             }
