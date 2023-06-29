@@ -35,8 +35,8 @@ setNewProfileData(dataOfUser) {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-            name: dataOfUser.title,
-            about: dataOfUser.job,
+            name: dataOfUser.name,
+            about: dataOfUser.about,
         })
     })
     .then(this._getResponseData);
@@ -59,7 +59,7 @@ setNewAvatar(data) {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.link,
+        avatar: data,
       })
     })
     .then(this._getResponseData);
@@ -68,9 +68,7 @@ setNewAvatar(data) {
 deleteMyCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: {
-        authorization: this._authorization
-        }
+      headers: this._headers
     })
     .then(this._getResponseData);
 }
