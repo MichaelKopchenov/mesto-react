@@ -37,6 +37,23 @@ function closeAllPopups() {
   setIsPicturePopupOpen(false);
 };
 
+const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isPicturePopupOpen
+
+useEffect(() => {
+  function closeByEscape(evt) {
+    if(evt.key === 'Escape') {
+      closeAllPopups();
+    }
+  }
+  if(isOpen) {
+    document.addEventListener('keydown', closeByEscape);
+    return () => {
+      document.removeEventListener('keydown', closeByEscape);
+    }
+  }
+}, [isOpen]) 
+
+
 function handleEditProfileClick() {
   setIsEditProfilePopupOpen(true)
 }
@@ -112,7 +129,9 @@ function handleUpdateAvatar(data) {
     })
     .catch((err) => {
       console.log(`Что-то пошло не так при обновлении аватара ${err}`)
-    })
+    })    
+    .finally(() => setIsLoading(false));
+
 };
 
 function handleAddPlaceSubmit(data) {
